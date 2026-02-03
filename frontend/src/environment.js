@@ -1,6 +1,6 @@
 let IS_PROD = false;
 const server = IS_PROD ?
-    "" :
+    "https://videoconfbackend.onrender.com" :
 
     "http://localhost:8000"
 
