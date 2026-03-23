@@ -54,6 +54,9 @@ export default function VideoMeetComponent() {
 
     let [username, setUsername] = useState("");
 
+    const [mainVideoId, setMainVideoId] = useState(null);
+
+
     const videoRef = useRef([])
 
     let [videos, setVideos] = useState([])
@@ -68,7 +71,7 @@ export default function VideoMeetComponent() {
         console.log("HELLO")
         getPermissions();
 
-    })
+    }, [])
 
     let getDislayMedia = () => {
         if (screen) {
@@ -525,11 +528,10 @@ export default function VideoMeetComponent() {
 
                     <video className={styles.meetUserVideo} ref={localVideoref} autoPlay muted></video>
 
-                    <div className={styles.conferenceView}>
+                    <div className={styles.conferenceView} >
                         {videos.map((video) => (
-                            <div key={video.socketId}>
+                            <div key={video.socketId} >
                                 <video
-
                                     data-socket={video.socketId}
                                     ref={ref => {
                                         if (ref && video.stream) {
@@ -537,6 +539,8 @@ export default function VideoMeetComponent() {
                                         }
                                     }}
                                     autoPlay
+                                    playsInline
+                                    
                                 >
                                 </video>
                             </div>
